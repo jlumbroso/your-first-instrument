@@ -47,9 +47,19 @@ uv run server.py     # THAT'S IT — environment built, deps resolved, server up
 Why not `pip install`? Your machine will refuse, and it's right to — see
 `docs/adr/0004-virtual-environments-and-uv.md`: every project gets its own room.
 
-Then in Claude: Settings → Connectors → Add custom connector →
-`http://localhost:8000/mcp` — and ask: *"What time is it? How long have we
-been talking?"* The model still has no clock; it learned to consult one. Yours.
+Then hand it to your **in-editor** collaborator (Claude Code reaches localhost;
+the browser claude.ai can't — it calls from the cloud, which is exactly why
+deployment exists):
+
+```bash
+claude mcp add --transport http first-instrument http://localhost:8000/mcp
+```
+
+Ask it: *"What time is it? How long have we been talking?"* The model still
+has no clock; it learned to consult one. Yours. Once deployed (ADR-0003),
+add the LIVE URL to claude.ai → Settings → Connectors — and both of your
+surfaces hold the instrument. (Emergency tunnel, no account: `cloudflared
+tunnel --url http://localhost:8000` hands you a temporary public URL.)
 
 ## License
 
