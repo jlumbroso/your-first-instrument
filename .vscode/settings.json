@@ -1,1 +1,35 @@
-{ "peacock.color": "#A8C930" }
+{
+  // ── Inherited from the instructor's own configuration (see the course's
+  //    VS Code guide): subtract what crowds thought, then invite on purpose ──
+  "window.commandCenter": false,
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.startupEditor": "none",
+  "workbench.notifications.showInTitleBar": false,
+  "workbench.enableExperiments": false,
+  "workbench.browser.showInTitleBar": true,
+  "terminal.integrated.initialHint": false,
+  "terminal.integrated.showLinkHover": false,
+
+  // one assistant, deliberately — the ambient chorus off
+  "chat.disableAIFeatures": true,
+  "chat.agent.enabled": false,
+  "workbench.commandPalette.showAskInChat": false,
+  "workbench.browser.enableChatTools": false,
+  "github.copilot.enable": { "*": false },
+  "claudeCode.preferredLocation": "panel",
+
+  // editor feel
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.fontLigatures": true,
+  "editor.suggestSelection": "first",
+  "editor.autoClosingBrackets": "never",
+  "editor.inlineSuggest.enabled": true,
+  "python.analysis.typeCheckingMode": "strict",
+  "adrManager.reportButton.enabled": true,
+
+  // this project's color (Peacock)
+  "peacock.color": "#A8C930",
+  "peacock.affectStatusAndTitleBorders": true
+}
