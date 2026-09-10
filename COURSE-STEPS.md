@@ -11,7 +11,7 @@ install → open. macOS only, then: ⌘⇧P → type "shell command" → "Instal
 'code' command in PATH". (Windows: nothing to do — but you should be inside
 WSL for everything below.)
 
-**S2 — The four extensions, one command.** Terminal menu → New Terminal, paste:
+**S2 — The three extensions, one command.** Terminal menu → New Terminal, paste:
 ```bash
 code --install-extension johnpapa.vscode-peacock --install-extension jlumbroso.adrs4ai --install-extension fabiospampinato.vscode-terminals
 ```
@@ -20,7 +20,8 @@ code --install-extension johnpapa.vscode-peacock --install-extension jlumbroso.a
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash   # or: npm install -g @anthropic-ai/claude-code
 claude                                           # first run: log in with your COURSE WORKSPACE account
-``` Nothing should autocomplete at you unbidden — that
+```
+Nothing should autocomplete at you unbidden — that
 silence is configured, and it's yours. (No workspace access? Email the address
 from the pre-class email; we don't debug accounts live.)
 
@@ -41,8 +42,8 @@ git --version             # triggers Apple's git install if needed
 name (keep `your-first-instrument` if unsure) → Create.
 
 **R2 — Open it in VS Code.** ⌘⇧P → "Git: Clone" → paste YOUR repo's URL →
-choose a folder → Open. (Or tell Claude Code: *"Clone my repo <URL> and open
-it."* You direct; it drives.)
+choose a folder → Open. (Or tell `claude`: *"Clone my repo <URL> and open
+it in VS Code."* You direct; it drives.)
 
 **R3 — Run it.**
 ```bash
