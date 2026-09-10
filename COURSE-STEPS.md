@@ -74,10 +74,30 @@ cloudflared tunnel --url http://localhost:8000
 ```
 Copy the printed `https://….trycloudflare.com` URL.
 
-**R7 — Hand it to the workspace Claude.** claude.ai → your initials
-(bottom-left) → Settings → Connectors → Add custom connector → name
-`first-instrument`, URL = your tunnel URL + `/mcp` → Add. In a chat, enable
-it and ask the time. **Both of your surfaces now hold your instrument.**
+**R7 — Hand it to a chat Claude.** At this time, the Claude Team account
+does not allow individual (custom) connectors on the web — that's an
+Anthropic policy, not a mistake you made. Two good paths:
+
+**Option A — Claude Desktop (recommended; no tunnel needed).** The desktop
+app runs on YOUR machine, so it can reach localhost directly. Download
+claude.ai/download, sign in (your workspace account works), then add your
+server to the desktop config — in `claude`-speak, edit
+`claude_desktop_config.json` (Settings → Developer → Edit Config):
+```json
+{ "mcpServers": { "first-instrument": {
+    "command": "npx", "args": ["-y", "mcp-remote", "http://localhost:8000/mcp"]
+} } }
+```
+Restart the desktop app → your tools appear. (Server must be running: R3.)
+
+**Option B — a personal claude.ai account (web).** Custom connectors ARE
+allowed on personal plans, including free: use a free account with the same
+email as your team seat, then claude.ai → Settings → Connectors → Add custom
+connector → your R6 tunnel URL + `/mcp`. Your course thinking stays in the
+workspace; your instrument testing lives on the personal side.
+
+Either way, enable the connector in a chat and ask the time. **Your
+instrument crossed to a chat Claude.**
 
 ## After R7 (tonight or at home)
 
