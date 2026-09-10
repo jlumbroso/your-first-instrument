@@ -72,6 +72,18 @@ Add that URL (`https://…trycloudflare.com/mcp`) in claude.ai → Settings →
 Connectors — both surfaces now hold your instrument. The tunnel dies with
 your terminal; when you want a PERMANENT home, deploy to Render (ADR-0003).
 
+## Deploy it — a permanent home (Render, free)
+
+The tunnel dies with your terminal. For an instrument that outlives your laptop:
+
+1. **render.com** → Sign in **with GitHub** (the account holding your repo).
+2. **New +** → **Blueprint** → select your repo → **Apply**. (`render.yaml` does the rest.)
+3. ~2 minutes of build → copy your `https://….onrender.com` URL.
+4. claude.ai → Settings → Connectors → edit `first-instrument` → swap URL to the Render one + `/mcp`.
+
+Free-tier truth (ADR-0003): the instance naps when idle — first call after a nap
+takes ~30s. Fine for an instrument; now you know why.
+
 ## License
 
 MPL-2.0 with a Template Output Grant — the template stays open with attribution; what YOU build from it may be Apache-2.0 (open, attributed) or fully closed. See LICENSE + TEMPLATE-GRANT.md.
