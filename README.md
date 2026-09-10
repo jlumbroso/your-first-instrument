@@ -22,12 +22,30 @@ model cannot.
 - `render.yaml` — one-click deploy to Render's free tier, so your instrument
   gets a URL anyone's Claude can connect to.
 
-## Run it (5 minutes)
+## What you might need to install (once per machine)
+
+macOS ships less than you'd think. In Terminal, in order (skip what you have):
 
 ```bash
-pip install "mcp[cli]"          # the official MCP SDK
-python server.py                # starts locally (streamable-http, port 8000)
+# 1. Homebrew — the missing package manager for macOS (from brew.sh):
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# 2. uv — the Python project runner (installs Python itself if needed):
+brew install uv
+# 3. git — Apple installs it on first use; this just triggers that:
+git --version
 ```
+
+Windows: Do all of this inside WSL (see the course setup guide); the same
+commands work there with `apt`-flavored Homebrew or the uv curl installer.
+
+## Run it (2 minutes)
+
+```bash
+uv run server.py     # THAT'S IT — environment built, deps resolved, server up (port 8000)
+```
+
+Why not `pip install`? Your machine will refuse, and it's right to — see
+`docs/adr/0004-virtual-environments-and-uv.md`: every project gets its own room.
 
 Then in Claude: Settings → Connectors → Add custom connector →
 `http://localhost:8000/mcp` — and ask: *"What time is it? How long have we
