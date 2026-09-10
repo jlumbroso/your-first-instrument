@@ -31,7 +31,9 @@ macOS ships less than you'd think. In Terminal, in order (skip what you have):
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # 2. uv — the Python project runner (installs Python itself if needed):
 brew install uv
-# 3. git — Apple installs it on first use; this just triggers that:
+# 3. cloudflared — the tunnel that lets claude.ai reach your laptop:
+brew install cloudflared
+# 4. git — Apple installs it on first use; this just triggers that:
 git --version
 ```
 
@@ -56,10 +58,19 @@ claude mcp add --transport http first-instrument http://localhost:8000/mcp
 ```
 
 Ask it: *"What time is it? How long have we been talking?"* The model still
-has no clock; it learned to consult one. Yours. Once deployed (ADR-0003),
-add the LIVE URL to claude.ai → Settings → Connectors — and both of your
-surfaces hold the instrument. (Emergency tunnel, no account: `cloudflared
-tunnel --url http://localhost:8000` hands you a temporary public URL.)
+has no clock; it learned to consult one. Yours.
+
+**To reach the browser claude.ai, a tunnel is REQUIRED** — claude.ai calls
+from Anthropic's cloud and can never see your laptop directly:
+
+```bash
+brew install cloudflared          # once
+cloudflared tunnel --url http://localhost:8000   # prints your public URL
+```
+
+Add that URL (`https://…trycloudflare.com/mcp`) in claude.ai → Settings →
+Connectors — both surfaces now hold your instrument. The tunnel dies with
+your terminal; when you want a PERMANENT home, deploy to Render (ADR-0003).
 
 ## License
 
