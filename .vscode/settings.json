@@ -17,7 +17,6 @@
   "workbench.commandPalette.showAskInChat": false,
   "workbench.browser.enableChatTools": false,
   "github.copilot.enable": { "*": false },
-  "claudeCode.preferredLocation": "panel",
 
   // editor feel
   "editor.formatOnSave": true,

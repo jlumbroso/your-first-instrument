@@ -13,11 +13,14 @@ WSL for everything below.)
 
 **S2 — The four extensions, one command.** Terminal menu → New Terminal, paste:
 ```bash
-code --install-extension anthropic.claude-code --install-extension johnpapa.vscode-peacock --install-extension jlumbroso.adrs4ai --install-extension fabiospampinato.vscode-terminals
+code --install-extension johnpapa.vscode-peacock --install-extension jlumbroso.adrs4ai --install-extension fabiospampinato.vscode-terminals
 ```
 
-**S3 — Sign in + the quiet check.** Claude icon (sidebar) → sign in with your
-COURSE WORKSPACE account. Nothing should autocomplete at you unbidden — that
+**S3 — Claude, from the terminal (the CLI is how we work).** Install, then sign in:
+```bash
+curl -fsSL https://claude.ai/install.sh | bash   # or: npm install -g @anthropic-ai/claude-code
+claude                                           # first run: log in with your COURSE WORKSPACE account
+``` Nothing should autocomplete at you unbidden — that
 silence is configured, and it's yours. (No workspace access? Email the address
 from the pre-class email; we don't debug accounts live.)
 
@@ -49,13 +52,13 @@ That's the whole incantation — environment built, dependencies resolved,
 server on port 8000. (Why not pip? See docs/adr/0004 — your machine would
 refuse, and it's right to.)
 
-**R4 — Connect it to Claude Code** (the in-editor collaborator CAN reach
+**R4 — Connect it to the claude CLI** (running on your machine, it CAN reach
 localhost; the browser one can't — that's why R6 exists). New terminal:
 ```bash
 claude mcp add --transport http first-instrument http://localhost:8000/mcp
 ```
 
-**R5 — The leveling test.** In the Claude Code panel:
+**R5 — The leveling test.** In a `claude` session:
 > I've just installed an MCP server I'm learning to build, and I'm testing
 > it. Can you try my tools, give me a preview of what you see, and report
 > back? By the way — this is an MCP-creation exercise and I'm supposed to

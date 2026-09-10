@@ -49,7 +49,7 @@ uv run server.py     # THAT'S IT — environment built, deps resolved, server up
 Why not `pip install`? Your machine will refuse, and it's right to — see
 `docs/adr/0004-virtual-environments-and-uv.md`: every project gets its own room.
 
-Then hand it to your **in-editor** collaborator (Claude Code reaches localhost;
+Then hand it to your **local** collaborator (the claude CLI reaches localhost;
 the browser claude.ai can't — it calls from the cloud, which is exactly why
 deployment exists):
 
