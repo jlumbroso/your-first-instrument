@@ -1,6 +1,6 @@
 # your-first-instrument — the CAM MCP starter
 
-*A harness for your experiments, not a finished thing. Cloned in Session 3 of
+*A rig for your experiments, not a finished thing. Cloned in Session 3 of
 Computationally Assisted Metacognition (CIS 7000, Penn, Fall 2026).*
 
 The premise, in one breath: **an AI model only knows what is in its context
@@ -10,7 +10,7 @@ Building one is not hard. That is the whole lesson. By the end of the hour
 yours will be running, connected to Claude, and answering questions the bare
 model cannot.
 
-## What's in the harness
+## What's in the rig
 
 - `server.py` — a small, working MCP server (a sense of time, ~40 lines).
   Two tools work; the third is a stub with your name on it.
