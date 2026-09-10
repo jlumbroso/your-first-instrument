@@ -1,0 +1,10 @@
+# One-click deploy: https://render.com → New → Blueprint → this repo.
+# Free tier note (ADR-0003): the instance sleeps when idle; first call
+# after a nap takes ~30s. Fine for an instrument; know it's there.
+services:
+  - type: web
+    name: your-first-instrument
+    runtime: python
+    plan: free
+    buildCommand: pip install "mcp[cli]"
+    startCommand: python server.py
