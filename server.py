@@ -26,7 +26,11 @@ def seconds_since(iso_timestamp: str) -> str:
     """Seconds elapsed since an ISO timestamp (e.g. '2026-09-10T17:15:00')."""
     then = datetime.fromisoformat(iso_timestamp)
     if then.tzinfo is None:
-        then = then.replace(tzinfo=timezone.utc)
+        # Naive timestamps are read as LOCAL time, not UTC. (Bug caught in-room
+        # during the R5 leveling test, session 3: a student read the code with
+        # their collaborator and noticed line-2 assumed UTC while now() was
+        # offset-aware — the audit test, passing in the wild. Thank you.)
+        then = then.replace(tzinfo=datetime.now().astimezone().tzinfo)
     delta = datetime.now(timezone.utc) - then
     return f"{delta.total_seconds():.0f} seconds ({delta})"
 
