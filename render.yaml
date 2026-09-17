@@ -6,5 +6,5 @@ services:
     name: your-first-instrument
     runtime: python
     plan: free
-    buildCommand: pip install "mcp[cli]"
+    buildCommand: pip install "mcp[cli]>=1.2,<2"  # PINNED — mcp 2.x renamed FastMCP (caught in class 2026-09-10, and again on Render 2026-09-17: this buildCommand bypasses pyproject.toml, so the pin must live in BOTH places)
     startCommand: python server.py
