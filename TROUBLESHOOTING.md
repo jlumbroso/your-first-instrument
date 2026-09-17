@@ -85,3 +85,24 @@ its window. One terminal for the server, one for the tunnel, one for you.
 tunnels, through the Desktop app, and through personal-account connectors —
 including one delivering Twilight quotes. Working beats impressive; both
 happened.*
+
+## Render deploy crashes: `No module named 'mcp.server.fastmcp'` (added 2026-09-17)
+
+**Symptom**: the Blueprint build succeeds but the service exits with
+`ModuleNotFoundError: No module named 'mcp.server.fastmcp'... This is mcp 2.x`.
+
+**Cause**: your copy's `render.yaml` installs mcp UNPINNED
+(`pip install "mcp[cli]"`), so Render grabs mcp 2.x, which renamed FastMCP.
+The pin added to `pyproject.toml` on 2026-09-10 never applied here — the
+Blueprint's buildCommand bypasses pyproject entirely. Same break, second
+door. (Caught by the instructor himself doing a dress-rehearsal deploy —
+the audit test passing in the wild, again.)
+
+**Fix (30 seconds, and on-theme — direct your collaborator)**: in your repo,
+tell `claude`:
+
+    In render.yaml, change the buildCommand to
+    pip install "mcp[cli]>=1.2,<2" — then commit and push.
+
+Render redeploys on the push, automatically. Instantiated the template on or
+after 2026-09-17? You already have the fix.
